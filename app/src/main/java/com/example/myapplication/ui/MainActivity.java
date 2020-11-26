@@ -23,6 +23,10 @@ public class MainActivity extends AppCompatActivity implements EmojiGameAdapter.
         emojiRecycler.setLayoutManager(new GridLayoutManager(this, 4));
         emojiGame = new EmojiGame();
 
+        emojiRecycler.setOnClickListener(view -> {
+
+        });
+
         emojiGameAdapter = new EmojiGameAdapter(emojiGame, this);
         emojiRecycler.setAdapter(emojiGameAdapter);
     }
@@ -30,12 +34,6 @@ public class MainActivity extends AppCompatActivity implements EmojiGameAdapter.
     @Override
     public void choose(Card<String> card) {
         emojiGame.choose(card);
-        emojiGameAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void close(Card<String> card) {
-        emojiGame.close(card);
         emojiGameAdapter.notifyDataSetChanged();
     }
 }

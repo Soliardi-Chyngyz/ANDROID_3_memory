@@ -17,6 +17,12 @@ public class EmojiGameAdapter extends RecyclerView.Adapter<EmojiGameAdapter.Emoj
     private final EmojiGame game;
     private final CardCallBack cardCallBack;
 
+    private static int clicked = 0;
+
+    public static int getClicked() {
+        return clicked;
+    }
+
     public EmojiGameAdapter(EmojiGame game, CardCallBack cardCallBack) {
         this.game = game;
         this.cardCallBack = cardCallBack;
@@ -52,20 +58,11 @@ public class EmojiGameAdapter extends RecyclerView.Adapter<EmojiGameAdapter.Emoj
 
         public void bind(Card<String> card, int position) {
 
-            int cardBack = 0;
-            int clicked = 0;
-            int lastClicked = -1;
-            boolean turnOver = false;
-
-            for (int i = 0; i < 16; i++) {
-                
-            }
-
             itemView.setOnClickListener(view -> {
                 cardCallBack.choose(card);
             });
 
-            if (card.isFaceUp()) {
+            if (card.isFaceUp()){
                 content.setText(card.getContent());
                 itemView.setBackgroundColor(Color.WHITE);
             } else if (!card.isFaceUp()){
@@ -77,6 +74,5 @@ public class EmojiGameAdapter extends RecyclerView.Adapter<EmojiGameAdapter.Emoj
 
     interface CardCallBack {
         void choose(Card<String> card);
-        void close(Card<String> card);
     }
 }

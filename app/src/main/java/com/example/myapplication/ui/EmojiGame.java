@@ -21,11 +21,9 @@ public class EmojiGame {
         game.choose(card);
     }
 
-    public void close(Card<String> card) {
-        game.close(card);
-    }
-
     public List<Card<String>> getCards() {
         return game.getCards();
     }
+
+
 }

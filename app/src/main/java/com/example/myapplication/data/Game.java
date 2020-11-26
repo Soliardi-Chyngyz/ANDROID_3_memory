@@ -1,6 +1,8 @@
 package com.example.myapplication.data;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Game<CardContent> {
@@ -11,11 +13,9 @@ public class Game<CardContent> {
             cards.add(new Card<>(false, false, content.get(i), i * 2));
             cards.add(new Card<>(false, false, content.get(i), i * 2 + 1));
         }
+        Collections.shuffle(cards);
     }
 
-    public void close(Card<CardContent> card) {
-
-    }
 
     public void choose(Card<CardContent> card) {
         card.setFaceUp(!card.isFaceUp());
@@ -29,7 +29,11 @@ public class Game<CardContent> {
                 if (anotherCard.getContent().equals(card.getContent())) {
                     anotherCard.setMatched(true);
                     card.setMatched(true);
+                } else {
+                    card.setFaceUp(false);
+                    anotherCard.setFaceUp(false);
                 }
+
             }
         }
         removePair();

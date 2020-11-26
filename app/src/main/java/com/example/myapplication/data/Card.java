@@ -3,6 +3,7 @@ package com.example.myapplication.data;
 import java.util.Objects;
 
 public class Card <T> {
+
     private int id;
     private boolean isFaceUp;
     private boolean isMatched; //совпадение карт
